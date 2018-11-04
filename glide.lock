@@ -1,0 +1,20 @@
+hash: ac9f31a4567b3fb5d7019e5350e7b67aa8ebc738a10e09d4ee3f968cfa1f48a6
+updated: 2018-11-06T22:08:07.6537563+08:00
+imports: []
+testImports:
+- name: github.com/alicebob/gopher-json
+  version: 5a6b3ba71ee69b77cf64febf8b5a7526ca5eaef0
+- name: github.com/alicebob/miniredis
+  version: 3657542c8629876a1fa83e0b30a0246a67ffa652
+  subpackages:
+  - server
+- name: github.com/gomodule/redigo
+  version: e8fc0692a7e26a05b06517348ed466349062eb47
+  subpackages:
+  - redis
+- name: github.com/yuin/gopher-lua
+  version: 12c4817b42c5e5b1f9e2690e42bfeaac8727924f
+  subpackages:
+  - ast
+  - parse
+  - pm
