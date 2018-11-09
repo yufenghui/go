@@ -192,8 +192,60 @@ func NewRespWriter(bw *bufio.Writer) *RespWriter {
 	return r
 }
 
+func (resp *RespWriter) Flush() error {
+	return resp.bw.Flush()
+}
+
+func (resp *RespWriter) writeInteger(n int64) error {
+	var err error
+	if n >= 0 && n < int64(len(intBuffer)) {
+		_, err = resp.bw.Write(intBuffer[n])
+	} else {
+		_, err = resp.bw.Write(strconv.AppendInt(nil, n, 10))
+	}
+
+	return err
+}
+
+func (resp *RespWriter) writeTerm() error {
+	_, err := resp.bw.Write(respTerm)
+	return err
+}
+
+func (resp *RespWriter) writeBulkString(s string) error {
+	resp.bw.WriteByte('$')
+	resp.writeInteger(int64(len(s)))
+	resp.writeTerm()
+	resp.bw.WriteString(s)
+
+	return resp.writeTerm()
+}
+
 // RESP command is array of bulk string
 func (resp *RespWriter) WriteCommand(cmd string, args ...interface{}) error {
+	resp.bw.WriteByte('*')
 
-	return nil
+	resp.writeInteger(int64(1 + len(args)))
+	resp.writeTerm()
+
+	err := resp.writeBulkString(cmd)
+
+	for _, arg := range args {
+		if err != nil {
+			break
+		}
+		switch arg := arg.(type) {
+		case string:
+			err = resp.writeBulkString(arg)
+		case []byte:
+			err = resp.WriteBulk(arg)
+		}
+
+	}
+
+	if err != nil {
+		return err
+	}
+
+	return resp.Flush()
 }
