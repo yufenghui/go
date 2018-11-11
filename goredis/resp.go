@@ -2,8 +2,11 @@ package goredis
 
 import (
 	"bufio"
+	"bytes"
 	"errors"
+	"fmt"
 	"io"
+	"log"
 	"strconv"
 )
 
@@ -221,6 +224,27 @@ func (resp *RespWriter) writeBulkString(s string) error {
 	return resp.writeTerm()
 }
 
+func (resp *RespWriter) writeBulkInt64(n int64) error {
+	return resp.WriteBulk(strconv.AppendInt(resp.numScratch[:0], n, 10))
+}
+
+func (resp *RespWriter) writeBulkFloat64(n float64) error {
+	return resp.WriteBulk(strconv.AppendFloat(resp.numScratch[:0], n, 'g', -1, 64))
+}
+
+func (resp *RespWriter) WriteBulk(b []byte) error {
+	resp.bw.WriteByte('$')
+	if b == nil {
+		resp.bw.Write(nullBulk)
+	} else {
+		resp.writeInteger(int64(len(b)))
+		resp.writeTerm()
+		resp.bw.Write(b)
+	}
+
+	return resp.writeTerm()
+}
+
 // RESP command is array of bulk string
 func (resp *RespWriter) WriteCommand(cmd string, args ...interface{}) error {
 	resp.bw.WriteByte('*')
@@ -239,6 +263,22 @@ func (resp *RespWriter) WriteCommand(cmd string, args ...interface{}) error {
 			err = resp.writeBulkString(arg)
 		case []byte:
 			err = resp.WriteBulk(arg)
+		case int64:
+			err = resp.writeBulkInt64(arg)
+		case float64:
+			err = resp.writeBulkFloat64(arg)
+		case bool:
+			if arg {
+				err = resp.writeBulkString("1")
+			} else {
+				err = resp.writeBulkString("0")
+			}
+		case nil:
+			err = resp.writeBulkString("")
+		default:
+			var buf bytes.Buffer
+			fmt.Fprint(&buf, arg)
+			err = resp.WriteBulk(buf.Bytes())
 		}
 
 	}
@@ -246,6 +286,8 @@ func (resp *RespWriter) WriteCommand(cmd string, args ...interface{}) error {
 	if err != nil {
 		return err
 	}
+
+	log.Printf("send data: %s", resp.bw)
 
 	return resp.Flush()
 }

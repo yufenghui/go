@@ -51,3 +51,37 @@ func TestGet(t *testing.T) {
 		}
 	}
 }
+
+func TestDo(t *testing.T) {
+	s, err := miniredis.Run()
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer s.Close()
+
+	addr := s.Addr()
+
+	client := NewClient(addr, "")
+
+	ret, err := client.Do("PING", nil)
+	if err != nil {
+		t.Errorf("error: %s\n", err)
+	} else {
+		t.Logf("PING返回: %s", ret)
+	}
+
+	ret, err = client.Do("SET", "msg", "hello")
+	if err != nil {
+		t.Errorf("error: %s\n", err)
+	} else {
+		t.Logf("SET 'msg' 返回: %s", ret)
+	}
+
+	ret, err = client.Do("GET", "msg")
+	if err != nil {
+		t.Errorf("error: %s\n", err)
+	} else {
+		t.Logf("GET 'msg' 返回: %s", ret)
+	}
+
+}

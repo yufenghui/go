@@ -3,6 +3,7 @@ package goredis
 import (
 	"bufio"
 	"io"
+	"log"
 	"net"
 	"sync/atomic"
 )
@@ -107,6 +108,8 @@ func (c *Conn) Send(cmd string, args ...interface{}) error {
 
 // Receive RESP reply
 func (c *Conn) Receive() (interface{}, error) {
+	log.Printf("receive data: %s", c.respReader.br)
+
 	if reply, err := c.respReader.Parse(); err != nil {
 		c.Close()
 		return nil, err
