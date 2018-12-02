@@ -1,5 +1,5 @@
 hash: ac9f31a4567b3fb5d7019e5350e7b67aa8ebc738a10e09d4ee3f968cfa1f48a6
-updated: 2018-11-06T22:08:07.6537563+08:00
+updated: 2018-12-02T23:32:09.758019+08:00
 imports: []
 testImports:
 - name: github.com/alicebob/gopher-json
@@ -13,7 +13,7 @@ testImports:
   subpackages:
   - redis
 - name: github.com/yuin/gopher-lua
-  version: 12c4817b42c5e5b1f9e2690e42bfeaac8727924f
+  version: a0dfe84f6227cda1c5f975bf3e35d55ae0d3df61
   subpackages:
   - ast
   - parse
