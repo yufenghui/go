@@ -1,5 +1,29 @@
 package: github.com/yufenghui/go
-import: []
+import:
+- package: github.com/gin-gonic/gin
+  version: v1.3.0
+- package: github.com/urfave/cli
+  version: v1.20.0
+- package: gopkg.in/tylerb/graceful.v1
+  version: ~1.2.15
+- package: github.com/RichardKnop/logging
+- package: github.com/jinzhu/gorm
+- package: github.com/jinzhu/configor
+- package: github.com/RichardKnop/go-fixtures
+- package: github.com/RichardKnop/uuid
+- package: github.com/gorilla/sessions
+- package: github.com/gorilla/securecookie
+- package: google.golang.org/appengine
+  repo: https://github.com/golang/appengine
+  vcs: git
+  subpackages:
+  - cloudsql
+
 testImport:
 - package: github.com/alicebob/miniredis
   version: ~2.4.5
+- package: github.com/stretchr/testify
+  vcs: git
+  subpackages:
+  - assert
+- package: github.com/mattn/go-sqlite3

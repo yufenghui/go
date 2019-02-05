@@ -1,0 +1,120 @@
+hash: 46692adef4a5ea0ad9382610cab488a028e893dd80c03cdd02b6389d8f0db762
+updated: 2019-02-05T11:49:08.829666+08:00
+imports:
+- name: github.com/BurntSushi/toml
+  version: 3012a1dbe2e4bd1391d42b32f0577cb7bbc7f005
+- name: github.com/gin-contrib/sse
+  version: a7658810eb745c2f22927282dea478278103a897
+- name: github.com/gin-gonic/gin
+  version: b869fe1415e4b9eb52f247441830d502aece2d4d
+  subpackages:
+  - binding
+  - json
+  - render
+- name: github.com/go-sql-driver/mysql
+  version: 6be42e0ff99645d7d9626d779001a46e39c5f280
+- name: github.com/golang/protobuf
+  version: 347cf4a86c1cb8d262994d8ef5924d4576c5b331
+  subpackages:
+  - proto
+- name: github.com/gorilla/securecookie
+  version: e65cf8c5df817c89aeb47ecb46064e802e2de943
+- name: github.com/gorilla/sessions
+  version: 68d1edeb366b66bdd5d714e32d7a065f74b03b9b
+- name: github.com/jinzhu/configor
+  version: 4edaf76fe18865e36de734d887f4c01bd05707af
+- name: github.com/jinzhu/gorm
+  version: 472c70caa40267cb89fd8facb07fe6454b578626
+  subpackages:
+  - dialects/mysql
+- name: github.com/jinzhu/inflection
+  version: 04140366298a54a039076d798123ffa108fff46c
+- name: github.com/json-iterator/go
+  version: f64ce68b6eea7b957a0d0d43e224dfe491b0babe
+- name: github.com/mattn/go-isatty
+  version: 3fb116b820352b7f0c281308a4d6250c22d94e27
+- name: github.com/modern-go/concurrent
+  version: bacd9c7ef1dd9b15be4a9909b8ac7a4e313eec94
+- name: github.com/modern-go/reflect2
+  version: 94122c33edd36123c84d5368cfb2b69df93a0ec8
+- name: github.com/RichardKnop/go-fixtures
+  version: 15577dcaa3727e7e0b15a6e24ba4f371fea9f762
+- name: github.com/RichardKnop/logging
+  version: b1d5d44c82d6c9fb6c8e8dad28412163586fd8ac
+- name: github.com/RichardKnop/uuid
+  version: c55201b036063326c5b1b89ccfe45a184973d073
+- name: github.com/ugorji/go
+  version: e444a5086c436778cf9281a7059a3d58b9e17935
+  subpackages:
+  - codec
+- name: github.com/urfave/cli
+  version: cfb38830724cc34fedffe9a2a29fb54fa9169cd1
+- name: golang.org/x/sys/unix
+  version: 41f3e6584952bb034a481797859f6ab34b6803bd
+- name: google.golang.org/appengine
+  version: 4a4468ece617fc8205e99368fa2200e9d1fad421
+  repo: https://github.com/golang/appengine
+  vcs: git
+  subpackages:
+  - cloudsql
+- name: gopkg.in/go-playground/validator.v8
+  version: 5f1438d3fca68893a817e4a66806cea46a9e4ebf
+- name: gopkg.in/tylerb/graceful.v1
+  version: 4654dfbb6ad53cb5e27f37d99b02e16c1872fbbb
+- name: gopkg.in/yaml.v2
+  version: 5420a8b6744d3b0345ab293f6fcba19c978f1183
+testImports:
+- name: github.com/alicebob/miniredis
+  version: 7aa580c6d4761b53c007d24aa18e730fef3e00d4
+- name: github.com/davecgh/go-spew
+  version: d8f796af33cc11cb798c1aaeb27a4ebc5099927d
+  subpackages:
+  - spew
+- name: github.com/gorilla/context
+  version: 51ce91d2eaddeca0ef29a71d766bb3634dadf729
+- name: github.com/gorilla/mux
+  version: 3d80bc801bb034e17cae38591335b3b1110f1c47
+- name: github.com/mattn/go-sqlite3
+  version: 6a9185d7b1f12363e2c904449d374b63b6093b16
+- name: github.com/mitchellh/mapstructure
+  version: 3536a929edddb9a5b34bd6861dc4a9647cb459fe
+- name: github.com/pmezard/go-difflib
+  version: 792786c7400a136282c1664665ae0a8db921c6c2
+  subpackages:
+  - difflib
+- name: github.com/RichardKnop/jsonhal
+  version: 9ef775cfa6bf439e2791421ed81ef44a42605cf2
+- name: github.com/spring2go/gravitee
+  version: 9e2453ee4c674b86b7fb8c2714331f8db30bb9d0
+  subpackages:
+  - config
+  - log
+  - models
+  - oauth
+  - oauth/roles
+  - oauth/tokentypes
+  - session
+  - test-util
+  - util
+  - util/migrations
+  - util/password
+  - util/response
+  - util/routes
+- name: github.com/stretchr/testify
+  version: 8019298d9fa5a04fc2ad10ae03349df3483096a6
+  vcs: git
+  subpackages:
+  - assert
+  - require
+  - suite
+- name: github.com/unrolled/secure
+  version: 4b6b7cf5160646fc0e8422d782fcf6bd4cbcaddf
+- name: github.com/urfave/negroni
+  version: 0af0d913cfc4cc6c389cc402eb70bf8a8fec374d
+- name: golang.org/x/crypto
+  version: 3d3f9f413869b949e48070b5bc593aa22cc2b8f2
+  repo: https://github.com/golang/crypto
+  vcs: git
+  subpackages:
+  - bcrypt
+  - blowfish
